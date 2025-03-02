@@ -7,26 +7,38 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .timer {
-    font-size: 48px;
+    font-size: 72px;
     margin: 20px;
 }
 
-.controls button {
-    font-size: 18px;
-    margin: 5px;
-    padding: 10px 20px;
+.controls, .mode {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+button {
+    font-size: 16px;
+    padding: 12px 24px;
     cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
-.mode {
-    margin-top: 20px;
-}
-
-.mode-toggle {
-    margin-bottom: 20px;
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .toggle-btn {
@@ -53,8 +65,35 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
 }
 
 #volume {
     cursor: pointer;
+    width: 150px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .timer {
+        font-size: 48px;
+        margin: 15px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+        width: calc(50% - 10px); /* Two buttons per row with gap */
+    }
+
+    .settings {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #volume {
+        width: 200px;
+    }
 } 
