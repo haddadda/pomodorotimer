@@ -46,4 +46,15 @@ body {
 .toggle-btn.rest {
     background-color: #4ecdc4;
     color: white;
+}
+
+.settings {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#volume {
+    cursor: pointer;
 } 

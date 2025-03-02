@@ -12,6 +12,10 @@ class PomodoroTimer {
             longBreak: 15
         };
 
+        // Add new audio elements
+        this.tickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2859/2859-preview.mp3');
+        this.tickSound.volume = 0.5;
+
         this.initializeButtons();
         this.updateDisplay();
     }
@@ -32,6 +36,14 @@ class PomodoroTimer {
             this.timerId = setInterval(() => {
                 this.timeLeft--;
                 this.updateDisplay();
+                
+                // Play tick sound for last 10 seconds
+                if (this.timeLeft <= 10 && this.timeLeft > 0) {
+                    const volume = document.getElementById('volume').value;
+                    this.tickSound.volume = volume;
+                    this.tickSound.currentTime = 0; // Reset sound to start
+                    this.tickSound.play();
+                }
                 
                 if (this.timeLeft === 0) {
                     this.pause();
@@ -66,6 +78,10 @@ class PomodoroTimer {
     }
 
     playAlarm() {
+        const audio = document.getElementById('alarmSound');
+        const volume = document.getElementById('volume').value;
+        audio.volume = volume;
+        audio.play();
         alert('Time is up!');
     }
 
